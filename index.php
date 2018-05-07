@@ -18,7 +18,7 @@ foreach ($hours as $order => $string) {
     $hoursFormat = json_decode($output, true);
     $string = urldecode($string);
 
-    $hoursOutput[] = '<li class="row"><strong>' . $string . "</strong>: <div>" .  $hoursFormat[$string] . '</div></li>';
+    $hoursOutput[] = '<li class="row"><strong>' . $string . ":</strong> <div>" .  $hoursFormat[$string] . '</div></li>';
 
     fclose($handle);
 
