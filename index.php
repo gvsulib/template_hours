@@ -26,7 +26,7 @@ foreach ($hours as $order => $string) {
 
 // Put it all together
 
-$json = '<?php header("Access-Control-Allow-Origin: *"");  ?> 
+$json = '<?php header("Access-Control-Allow-Origin: *");  ?> 
 <h2 class="h3">' . date("l") . '&#8217;s Hours</h3>
 <ul>';
 
