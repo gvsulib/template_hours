@@ -1,26 +1,40 @@
 <?php
 date_default_timezone_set('America/Detroit');
 
-// Cron job to pull the hours every morning
+//read hours data for today from libapps API
+$handle = fopen("https://api3.libcal.com/api_hours_today.php?iid=1647&lid=0&format=json&systemTime=1", "r");
+$output = fread($handle, 4000);
+$hours = json_decode($output, true);
 
-$hours =array(0 => "Mary%20Idema%20Pew", 
-              1 => "Steelcase", 
-              2 => "Frey"
-        );
+
+$locations = $hours["locations"];
+
+//locations we are looking to get hours on
+$codes = array("8552" => "Mary Idema Pew", "8738" => "Steelcase", "8907" => "Frey");
+$hours_locations = array();
+
+
+
+//cycle through the locations and pick out the time data for the ones we want
+foreach($locations as $location) {
+  if (array_key_exists($location["lid"], $codes)) {
+      $name = $codes[$location["lid"]];
+      $hours_locations[$name] = $location["rendered:"];
+    
+  }
+  
+}
 
 //get JSON for all hours and format them for display
 $hoursOutput = array();
 
-foreach ($hours as $order => $string) {
+foreach ($hours_locations as $name => $time) {
     
-    $handle = fopen('https://prod.library.gvsu.edu/hours_api/index.php?order=' . $order . '&string=' . $string, "r");
-    $output = fread($handle, 800);
-    $hoursFormat = json_decode($output, true);
-    $string = urldecode($string);
+    
 
-    $hoursOutput[] = '<li class="row"><strong>' . $string . ":</strong> <div>" .  $hoursFormat[$string] . '</div></li>';
+    $hoursOutput[] = '<li class="row"><strong>' . $name . ":</strong> <div>" .  $time . '</div></li>';
 
-    fclose($handle);
+    
 
 }
 
@@ -36,4 +50,4 @@ $json = '<h2 class="h3">' . date("l") . '&#8217;s Hours</h3>
 $json .= '</ul>
 <p><a href="https://www.gvsu.edu/library/hours.htm">More Hours</a></p>';
 
-file_put_contents('/var/www/prod/labs/template_hours/hours.php', $json);
+file_put_contents('./hours.php', $json);
