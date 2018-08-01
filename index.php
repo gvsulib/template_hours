@@ -19,7 +19,7 @@ $hours_locations = array();
 foreach($locations as $location) {
   if (array_key_exists($location["lid"], $codes)) {
       $name = $codes[$location["lid"]];
-      $hours_locations[$name] = $location["rendered:"];
+      $hours_locations[$name] = $location["rendered"];
     
   }
   
