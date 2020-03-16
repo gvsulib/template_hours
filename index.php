@@ -53,4 +53,4 @@ $json = '<h2 class="h3">' . date("l") . '&#8217;s Hours</h3>
 $json .= '</ul>
 <p><a href="https://www.gvsu.edu/library/hours.htm">More Hours</a></p>';
 
-file_put_contents('./hours.php', $json);
+echo $json;
