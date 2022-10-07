@@ -1,4 +1,5 @@
 <?php
+header("access-control-allow-origin: *");
 date_default_timezone_set('America/Detroit');
 
 //read hours data for today from libapps API
