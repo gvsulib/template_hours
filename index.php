@@ -1,4 +1,5 @@
 <?php
+header("access-control-allow-origin: *");
 date_default_timezone_set('America/Detroit');
 
 //read hours data for today from libapps API
@@ -10,7 +11,6 @@ $hours = json_decode($output, true);
 $locations = $hours["locations"];
 
 //locations we are looking to get hours on
-//$codes = array("8552" => "Mary Idema Pew Library", "8738" => "Steelcase Library", "8907" => "Frey Foundation Learning Center");
 
 $codes = array("19433" => "Chat, Text, &amp; Email", "8552" => "Mary Idema Pew Library", "8738" => "Steelcase Library", "8907" => "Frey Foundation Learning Commons");
 
