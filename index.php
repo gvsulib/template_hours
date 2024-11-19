@@ -11,13 +11,11 @@ $hours = json_decode($output, true);
 $locations = $hours["locations"];
 
 //locations we are looking to get hours on
-$codes = array("12435" => "Chat, Text, &amp; Email", "8552" => "Mary Idema Pew Library", "8738" => "Steelcase Library", "8907" => "Frey Foundation Learning Center");
+$codes = array("12435" => "Chat, Text, &amp; Email", "8552" => "Mary Idema Pew Library", "8738" => "Steelcase Library", "8907" => "Frey Foundation Learning Center", "8908" => "Lemmen Library &amp; Archives");
 
 //$codes = array("12435" => "Chat, Text, &amp; Email", "12433" => "Knowledge Market Online");
 
 $hours_locations = array();
-
-
 
 //cycle through the locations and pick out the time data for the ones we want
 foreach($locations as $location) {
