@@ -12,7 +12,7 @@ $locations = $hours["locations"];
 
 //locations we are looking to get hours on
 
-$codes = array("8552" => "Mary Idema Pew Library", "8738" => "Steelcase Library", "8907" => "Frey Foundation Learning Commons");
+$codes = array("8552" => "Mary Idema Pew Library", "8738" => "Steelcase Library", "8907" => "Frey Foundation Learning Commons", "8908" => "Lemmen Library &amp; Archives");
 
 $hours_locations = array();
 
